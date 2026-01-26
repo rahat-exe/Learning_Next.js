@@ -6,7 +6,7 @@ import React, { useState } from "react";
 const Navigation = () => {
   const [open, setOpen] = useState(false);
   return (
-    <nav className="shadow-sm ">
+    <nav className=" ">
       <div className="max-w-6xl mx-auto px-4 border-b">
         <div className="flex justify-between items-center h-12">
           {/* Logo */}
