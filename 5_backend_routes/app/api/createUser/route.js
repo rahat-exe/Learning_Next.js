@@ -3,7 +3,7 @@ import { users } from "../getUsers/route";
 
 export async function POST(request) {
   try {
-    const { name, email, age } = request.json();
+    const { name, email, age } = await request.json();
 
     if (!name || !email || !age) {
       return NextResponse.json(
@@ -38,5 +38,17 @@ export async function POST(request) {
     };
 
     users.push(newUser);
-  } catch (error) {}
+
+    return NextResponse.json({ success: true, data: users, message:"User created successfully"},{status:201})
+  } catch (error) {
+     return NextResponse.json(
+       {
+         success: false,
+         message: `error: ${error}`,
+       },
+       {
+         status: 400,
+       },
+     );
+  }
 }
