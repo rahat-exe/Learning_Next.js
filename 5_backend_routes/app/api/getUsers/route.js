@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-let users = [
+export const users = [
   {
     id: 1,
     name: "Rahat",
