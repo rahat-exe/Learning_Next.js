@@ -12,12 +12,12 @@ const notesSchema = new mongoose.Schema({
     maxLength: 2000,
   },
   createdAt: {
-    type: date,
-    default: date.now,
+    type: Date,
+    default: Date.now,
   },
   updatedAt: {
-    type: date,
-    default: date.now,
+    type: Date,
+    default: Date.now,
   }
 });
 
