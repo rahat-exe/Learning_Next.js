@@ -31,7 +31,7 @@ export async function POST(request) {
 
     return NextResponse.json(
       {
-        succuss: true,
+        success: true,
         data: craetedNote,
       },
       { status: 201 },

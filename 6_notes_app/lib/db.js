@@ -11,9 +11,10 @@ async function connectDb(){
     // }
 
     try {
-        const db = mongoose.connect(MONGODB_URL);
-        // isConnected = db.connections[0].readyState === 1
-        console.log("MongoDb connected", db)
+      const db = mongoose.connect(MONGODB_URL);
+      // isConnected = db.connections[0].readyState === 1
+      // console.log("MongoDb connected", db)
+      console.log("MongoDb connected")
     } catch (error) {
         console.error("MongoDb connection failed", error)
         throw error

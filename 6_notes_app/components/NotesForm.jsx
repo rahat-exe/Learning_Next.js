@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
-const NotesForm = () => {
+const NotesForm = ({notes}) => {
+  const [yourNotes, setYourNotes] = useState(notes)
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,12 +23,17 @@ const NotesForm = () => {
         body:JSON.stringify({title, content})
       })
       const result = await response.json()
-      console.log(result)
+      if(result.success){
+        setYourNotes([result.data, ...yourNotes])
+        toast.success("Notes created successfully")
+      }
       setLoading(false)
       setContent('')
       setTitle('')
     } catch (error) {
       console.error(error)
+        toast.error("Something gone wrong");
+
     }
   }
 
@@ -39,7 +46,7 @@ const NotesForm = () => {
           className="w-full border border-gray-600 rounded-lg p-1 pl-5"
           placeholder="Title..."
           value={title}
-          onChange={(e) => setTitle( e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
           required
         />
 
@@ -62,6 +69,39 @@ const NotesForm = () => {
           </button>
         </div>
       </form>
+
+      <div>
+        <h1 className="text-center text-lg font-mono mt-5">
+          Your Notes({yourNotes.length}){" "}
+        </h1>
+        {setYourNotes.length === 0 ? (
+          <p>No Notes yet.Create your first note above</p>
+        ) : (
+          yourNotes.map((note) => (
+            <div
+              key={note._id}
+              className="border border-gray-600 rounded-lg p-3 mb-3"
+            >
+              <div className="flex justify-between">
+                <h2 className=" text-lg font-semibold">{note.title}</h2>
+                <div className="flex gap-2">
+                  <button className="text-blue-400 text-sm hover:text-blue-500">
+                    Edit
+                  </button>
+                  <button className="text-red-400 text-sm hover:text-red-500">
+                    Delete
+                  </button>
+                </div>
+              </div>
+              <p>{note.content}</p>
+              <div className="flex justify-end-safe gap-2 text-sm text-gray-400">
+                <p>Created: {new Date(note.createdAt).toLocaleDateString()}</p>
+                <p>Updated: {new Date(note.createdAt).toLocaleDateString()}</p>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 };
