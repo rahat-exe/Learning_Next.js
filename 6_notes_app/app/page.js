@@ -1,7 +1,6 @@
 import NotesForm from "@/components/NotesForm";
 import connectDb from "@/lib/db";
 import note from "@/models/note";
-import Image from "next/image";
 
 async function getNotes(){
   await connectDb()
