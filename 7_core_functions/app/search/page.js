@@ -9,7 +9,7 @@ const page = () => {
     const category = searchParams.get("category");
     const page = searchParams.get('page');
     
-    // difyferent way
+    // different way
 
     const allParams = Array.from(searchParams.entries())
     console.log(allParams)
