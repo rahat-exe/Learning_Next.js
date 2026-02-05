@@ -1,11 +1,12 @@
-import { connectDB } from "@/lib/db";
-import Image from "next/image";
 
-export default async function Home() {
-  await connectDB()
+export default function Home() {
+  // await connectDB()
   return (
-    <div>
-     <h1>Hello World</h1>
-    </div>
+    <main className="min-h-screen max-w-5xl mx-auto">
+      <div className="p-3 space-y-5 mt-5">
+      <h1 className="text-3xl text-center font-mono font-semibold">Server Action Demo</h1>
+        <h3 className="text-2xl text-center font-mono">Contact form with mongoDb and revalidation</h3>
+      </div>
+    </main>
   );
 }
