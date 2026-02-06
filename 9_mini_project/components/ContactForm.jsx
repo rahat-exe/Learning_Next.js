@@ -5,6 +5,7 @@ import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { Button } from './ui/button'
 import { Textarea } from './ui/textarea'
+import { sendMessage } from '@/actions'
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -12,7 +13,20 @@ const ContactForm = () => {
   const [message, setMessage] = useState('')
 
   const handleClick = async (formData) => {
+    setIsSubmitting(true)
+    setMessage("")
 
+    const response = await sendMessage(formData)
+
+    if(response.success){
+      setMessage("Message send successfully")
+
+      const form = document.getElementById("contact-form")
+      form.reset()
+    }else{
+      setMessage(response.error || "Message not send")
+    }
+    setIsSubmitting(false)
   }
   return (
     <div>
@@ -21,7 +35,7 @@ const ContactForm = () => {
           <CardTitle>Contact Form</CardTitle>
         </CardHeader>
         <CardContent>
-          <form action={handleClick} className='space-y-4'>
+          <form id="contact-form" action={handleClick} className='space-y-4'>
             <div>
               <Label htmlFor="name">Name</Label>
               <Input id="name" name="name" type="text" required />

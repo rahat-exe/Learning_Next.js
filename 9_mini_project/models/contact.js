@@ -32,7 +32,7 @@ const contactSehema = new mongoose.Schema(
   { timestamps: true },
 );
 
-const Contact = mongoose.models.Contact || mongoose.model("contact", contactSehema)
+const Contact = mongoose.models.Contact || mongoose.model("Contact", contactSehema)
 
 export default Contact
 
