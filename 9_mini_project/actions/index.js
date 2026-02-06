@@ -38,3 +38,22 @@ export async function sendMessage(formData) {
     };
   }
 }
+
+export async function getMessage(){
+    try {
+       await connectDB()
+       const contants = await Contact.find({}).sort({createdAt:-1}).lean()
+
+       return contants.map((contact)=>(
+        {
+          ...contact,
+          _id: contact._id.toString(),
+          createdAt:contact.createdAt,
+          updatedAt: contact.updatedAt
+        }
+       ))
+    } catch (error) {
+        console.error("Something went wrong",error)
+        return []
+    }
+}

@@ -6,6 +6,7 @@ import { Label } from './ui/label'
 import { Button } from './ui/button'
 import { Textarea } from './ui/textarea'
 import { sendMessage } from '@/actions'
+import toast from 'react-hot-toast'
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -14,17 +15,19 @@ const ContactForm = () => {
 
   const handleClick = async (formData) => {
     setIsSubmitting(true)
-    setMessage("")
+    
 
     const response = await sendMessage(formData)
 
     if(response.success){
-      setMessage("Message send successfully")
+      
+      toast.success("Message send successfully");
 
       const form = document.getElementById("contact-form")
       form.reset()
     }else{
-      setMessage(response.error || "Message not send")
+      // setMessage(response.error || "Message not send")
+      toast.error(response.error)
     }
     setIsSubmitting(false)
   }
