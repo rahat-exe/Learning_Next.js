@@ -2,7 +2,14 @@ import React from 'react'
 
 // static metadata
 export const metadata = {
-    title:"About Page"
+    title:"About Page",
+    description:"Created with next.js",
+    openGraph:{
+      title:"Our website",
+      description:"Created with next.js",
+      images:['/file.svg'],
+      url:"http://localhost:3000/about"
+    }
 }
 
 const AboutPage = () => {
