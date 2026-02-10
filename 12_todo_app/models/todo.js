@@ -1,22 +1,21 @@
 import mongoose from "mongoose";
-import { boolean, maxLength } from "zod";
 
 
 const todoSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
-    maxLength: [200, "To long title"],
+    maxLength: [100, "To long title"],
     trim: true,
   },
   description: {
     type: String,
     required: true,
-    maxLength: [1000, "To long title"],
+    maxLength: [500, "To long description"],
     trim: true,
   },
   completed: {
-    type: boolean,
+    type: Boolean,
     default: false,
   },
   Priority: {
