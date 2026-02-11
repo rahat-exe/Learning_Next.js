@@ -17,17 +17,20 @@ export async function createTodo(data) {
 
     return {
       success: true,
-      data: JSON.parse(JSON.stringify(data)),
+      data: JSON.parse(JSON.stringify(todo)),
     };
   } catch (error) {
     console.error("error:", error);
     return {
       success: false,
-      message: error ? error.message : "Failed to create Todo",
+      error: error ? error.message : "Failed to create Todo",
     };
   }
-  /*
-Why use JSON.parse(JSON.stringify(data)) ?
+ 
+}
+
+ /*
+  Why use JSON.parse(JSON.stringify(data)) ?
 
 Step 1:
 Database libraries (like Mongoose) return complex objects that contain
@@ -62,4 +65,3 @@ Robot-like database object ➜ Simple transferable object
 This ensures the data can safely travel from the server to the client
 without serialization issues.
 */
-}

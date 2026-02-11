@@ -14,9 +14,9 @@
 
 import mongoose from 'mongoose'
 
-const MONGO_URL = process.env.MONGO_URL
+const MONGO_URI = process.env.MONGO_URI
 
-if(!MONGO_URL){
+if(!MONGO_URI){
     throw new Error("Please define the MongoDb uri env variable")
 }
 
@@ -31,7 +31,7 @@ async function connectDb() {
         return cached.conn
     }
     if(!cached.promise){
-        cached.promise = (await mongoose.connect(MONGO_URL)).then((mongoose) => {
+        cached.promise = await mongoose.connect(MONGO_URI).then((mongoose) => {
             return mongoose
         })
     }
