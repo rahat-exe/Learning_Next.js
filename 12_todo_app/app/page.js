@@ -1,4 +1,5 @@
 import TodoForm from "@/components/TodoForm";
+import TodoList from "@/components/TodoList";
 import connectDb from "@/lib/db";
 
 export default async function Home() {
@@ -15,6 +16,7 @@ export default async function Home() {
       <main>
         {/* all componennts here */}
         <TodoForm />
+        <TodoList />
       </main>
 
       {/* <footer>

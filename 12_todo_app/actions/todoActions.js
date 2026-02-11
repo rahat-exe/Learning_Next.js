@@ -29,6 +29,24 @@ export async function createTodo(data) {
  
 }
 
+export async function getTodos(){
+  try {
+    await connectDb()
+    const todos = await Todo.find({}).sort({createdAt:-1}).lean()
+
+    return {
+      success:true,
+      data:JSON.parse(JSON.stringify(todos))
+    }
+  } catch (error) {
+    console.error("error:",error)
+    return{
+      success:false,
+      error:error.message || "Something went wrong"
+    }
+  }
+}
+
  /*
   Why use JSON.parse(JSON.stringify(data)) ?
 
