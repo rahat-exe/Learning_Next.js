@@ -1,3 +1,4 @@
+import TodoFilter from "@/components/TodoFilter";
 import TodoForm from "@/components/TodoForm";
 import TodoList from "@/components/TodoList";
 import connectDb from "@/lib/db";
@@ -5,7 +6,7 @@ import connectDb from "@/lib/db";
 export default async function Home() {
   await connectDb();
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background max-w-4xl mx-auto">
       <div className="container mx-auto p-5 mb-5">
         <header className="text-center mb-5">
           <h1 className="text-4xl">Todo App</h1>
@@ -16,6 +17,7 @@ export default async function Home() {
       <main>
         {/* all componennts here */}
         <TodoForm />
+        <TodoFilter />
         <TodoList />
       </main>
 

@@ -10,7 +10,6 @@ const todoSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: true,
     maxLength: [500, "To long description"],
     trim: true,
   },

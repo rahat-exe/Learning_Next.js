@@ -16,14 +16,36 @@ export function useCreateTodo(){
     // for mutating the data like post,put,patch and delete
     return useMutation({
       mutationFn: (data) => createTodo(data),
-      onSuccess:(result) => {
-        if(result.success){
-            console.log(result)
+      onSuccess:(r) => {
+        if(r.success){
+            console.log(r)
             queryClient.invalidateQueries({queryKey:todoKeys.lists()})
         }
       }
     });
 }
+
+// async function fetchTodos ()  {
+//   const setTodos = useTodoStore((state) => state.setTodos);
+
+//   const res = await getTodos();
+//   console.log(res);
+
+//   if (res.success) {
+//     setTodos(res.data);
+
+//     return res.data;
+//   }
+//   throw new Error(result.error);
+// };
+// export function useTodos() {
+//   const setTodos = useTodoStore((state) => state.setTodos);
+
+//   return useQuery({
+//     queryKey: todoKeys.lists(),
+//     queryFn:fetchTodos
+//   });
+// }
 
 export function useTodos(){
   const setTodos = useTodoStore((state)=> state.setTodos)
