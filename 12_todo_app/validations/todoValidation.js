@@ -10,7 +10,7 @@ export const todoSchema = z.object({
     .string()
     .max(500, "Description should be under 500 characters")
     .optional(),
-    priority: z.enum(["low", "medium", "high"]).default("medium"),
+    Priority: z.enum(["low", "medium", "high"])
 });
 
 

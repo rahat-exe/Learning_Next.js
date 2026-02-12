@@ -8,7 +8,12 @@ import TodoItem from "./TodoItem";
 const TodoList = () => {
   const { data: todos, isLoading, error, isError } = useTodos();
 
-  const filteredTodos = useTodoStore((state) => state.filteredTodos());
+//   const filteredTodos = useTodoStore((state) => state.filteredTodos());
+
+    const {filteredTodos} =useTodoStore()
+
+    const filtered = filteredTodos()
+
 
   if (isLoading) {
     return (
@@ -20,7 +25,7 @@ const TodoList = () => {
   return (
     <div>
       <div className="text-gray-800">
-        {filteredTodos.map((todo) => (
+        {filtered.map((todo) => (
           <TodoItem key={todo._id} todo={todo}/>
         ))}
       </div>

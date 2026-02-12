@@ -29,7 +29,7 @@ const TodoForm = () => {
     defaultValues: {
       title: "",
       description: "",
-      priority: "medium",
+      Priority: "medium",
     },
     mode: "onSubmit",
   });
@@ -97,12 +97,12 @@ const TodoForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="priority">Priority</Label>
+            <Label htmlFor="Priority">Priority</Label>
             <Controller
-              name="priority"
+              name="Priority"
               control={form.control}
               render={({ field }) => (
-                <Select value={field.value} onValueChange={field.onChange} defaultValues={field.value}>
+                <Select value={field.value} onValueChange={field.onChange} >
                   <SelectTrigger>
                     <SelectValue placeholder="Select priority" />
                   </SelectTrigger>
@@ -114,7 +114,7 @@ const TodoForm = () => {
                 </Select>
               )}
             />
-            {form.formState.errors.priority && (
+            {form.formState.errors.Priority && (
               <p className="text-sm text-red-500">
                 {form.formState.errors.priority.message}
               </p>
