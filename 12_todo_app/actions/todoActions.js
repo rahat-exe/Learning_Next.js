@@ -51,7 +51,7 @@ export async function getTodos(){
 export async function toogleTodo(id){
   try {
     await connectDb()
-    const todo = await todo.findById(id)
+    const todo = await Todo.findById(id)
 
     if(!todo){
       return {
