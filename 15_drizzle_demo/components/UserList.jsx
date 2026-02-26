@@ -18,14 +18,16 @@ const UserList = ({ user: { id, name, email, age } }) => {
   }
 
   return (
-    <div>
-      <h1>name: {name}</h1>
-      <h2>
-        {email} {age}
-      </h2>
-      <button onClick={handleUpdate}>update</button>
-
-      <button onClick={handleSubmit}>Delete</button>
+    <div className="p-4 border border-gray-600 rounded-xl mb-2">
+      <h1 className="font-medium">
+        Name: <span>{name}</span>
+      </h1>
+      <h2 className="font-medium">Age: {age}</h2>
+      <h2 className="font-medium">Email: {email}</h2>
+      <div className=" flex gap-3 mt-2">
+        <button onClick={handleUpdate} className="border border-gray-700 p-1 rounded-xl hover:border-2">update</button>
+        <button onClick={handleSubmit}className="border border-gray-700 p-1 rounded-xl hover:border-2">Delete</button>
+      </div>
       {update && (
         <form action={updateUserFn}>
           <input name="name" defaultValue={name} />
