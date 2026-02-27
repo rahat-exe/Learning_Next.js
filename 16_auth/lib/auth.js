@@ -5,7 +5,7 @@ import prisma from "./db";
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
-    Provider: "postgesql",
+    Provider: "postgresql",
   }),
   emailAndPassword: {
     enabled: true,
@@ -21,3 +21,17 @@ export const auth = betterAuth({
     },
   },
 });
+
+// This file:
+
+// Creates your authentication system
+
+// Connects it to Prisma
+
+// Enables email/password login
+
+// Enables Google & GitHub login
+
+// Stores auth data in your PostgreSQL database
+
+// It is the backend auth configuration.
