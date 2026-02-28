@@ -14,6 +14,8 @@ export const { POST, GET } = toNextJsHandler(auth);
 
 // Automatically creates /api/auth/* routes
 
+
+
 // betterAuth() → authentication engine 🧠
 
 // toNextJsHandler() → adapter that connects engine to Next.js 🚪
